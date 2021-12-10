@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -94,24 +95,29 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
             String purpose = visitor.getPurpose();
             String visitorSearchDistrict = visitor.getDistrict_name();
 
+
             dialog=new Dialog(context);
             dialog.setContentView(R.layout.dialog_gmremarks);
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             dialog.setCancelable(true); //Optional
             dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
             // Capture the layout's TextView and set the string as its text
-            displayName = (TextView) dialog.findViewById(R.id.displayName);
-            displayOrgName = (TextView) dialog.findViewById(R.id.displayOrgName);
-            displayPhoneNumber = (TextView) dialog.findViewById(R.id.displayPhoneNumber);
-            displayPurpose = (TextView) dialog.findViewById(R.id.displayPurpose);
-            remarks = (EditText) dialog.findViewById(R.id.remark);
+            displayName = (TextView) dialog.findViewById(R.id.name);
+            displayOrgName = (TextView) dialog.findViewById(R.id.organisation);
+            displayPhoneNumber = (TextView) dialog.findViewById(R.id.phone);
+            displayPurpose = (TextView) dialog.findViewById(R.id.purpose);
+            remarks = (EditText) dialog.findViewById(R.id.remarks);
+            btnSave = (Button) dialog.findViewById(R.id.save);
 
             Toast.makeText(context, "loading", Toast.LENGTH_SHORT).show();
+
+//            displayName.setText(name);
+//            displayOrgName.setText(organisation);
+//            displayPhoneNumber.setText(phoneNumber);
+//            displayPurpose.setText(purpose);
+
+            displayName.setText("YES");
             dialog.show();
-            displayName.setText(name);
-            displayOrgName.setText(organisation);
-            displayPhoneNumber.setText(phoneNumber);
-            displayPurpose.setText(purpose);
 
 //
 //            Intent intent = new Intent(context, GMRemarks.class);
@@ -123,9 +129,35 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
 //            view.getContext().startActivity(intent);
 //            Log.d("ClickFromViewHolder", "Clicked");
 
+//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//            builder.setPositiveButton("OKAY", (dialog, which) -> {
+//                dialog.dismiss();
+////                listener.onPositiveButtonClicked();
+//
+//            });
+//
+//            builder.setNegativeButton("NOPE", (dialog, which) -> {
+//                dialog.dismiss();
+////                listener.onNegativeButtonClicked();
+//
+//            });
+//            builder.setTitle(context.getResources().getString(R.string.app_name));
+//            builder.setMessage("ALERT....");
+//            builder.setIcon(android.R.drawable.ic_dialog_alert);
+//            builder.setCancelable(false);
+//            builder.create().show();
+
+//            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+//// ...Irrelevant code for customizing the buttons and title
+//            LayoutInflater inflater = context.getLayoutInflater();
+//            View dialogView = inflater.inflate(R.layout.alert_label_editor, null);
+//            dialogBuilder.setView(dialogView);
+//
+//            EditText editText = (EditText) dialogView.findViewById(R.id.label_field);
+//            editText.setText("test label");
+//            AlertDialog alertDialog = dialogBuilder.create();
+//            alertDialog.show();
 
         }
-
-
     }
 }

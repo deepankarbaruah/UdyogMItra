@@ -30,10 +30,12 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/visitorcard.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/menu/navigation_gm_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/menu/navigation_menu.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/activity_gmremarks.xml" value="0.21331521739130435" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/dialog_gmremarks.xml" value="0.2" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
