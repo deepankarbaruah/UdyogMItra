@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentForm">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/formName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Enquiry Form"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorRed">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/visitorNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/visitorName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/ic_person"
+                    android:drawableRight="@drawable/ic_person"
+                    android:hint="@string/visitor_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/organisationNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/organisationName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/ic_organisation"
+                    android:drawableRight="@drawable/ic_organisation"
+                    android:hint="@string/organisation_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/visitorNumberInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/visitorNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/ic_phone"
+                    android:drawableRight="@drawable/ic_phone"
+                    android:hint="@string/visitorPhoneNumber" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/telephoneNumberInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/telephoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/ic_telephone"
+                    android:drawableRight="@drawable/ic_telephone"
+                    android:hint="@string/visitorTelephoneNumber" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TIL_distSpinner"
+                android:hint="Select District"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_height="match_parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/ACTV_dist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:hint="Purpose(Optional)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/purpose"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top|left"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="350dp"
+                android:layout_marginTop="15dp"
+                android:text="SUBMIT"
+                app:layout_constraintHorizontal_bias="0.498" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

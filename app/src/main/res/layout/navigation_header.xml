@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    android:backgroundTint="#3E8079"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:src="@drawable/emblem_logo"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/gmName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mr. Firstname Lastname"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/gmId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UserId:   AS003747"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center_horizontal"
+                android:textSize="14sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/gmDistrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="District: Kamrup Metro"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center_horizontal"
+                android:textSize="14sp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

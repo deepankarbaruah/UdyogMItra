@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">UdyogMItra</string>
+    <string name="title">EASE OF DOING BUSINESS IN ASSAM</string>
+    <string name="department">DEPARTMENT OF INDUSTRIES AND COMMERCE</string>
+    <string name="subtitle">Government of Assam</string>
+    <string name="title_name">Udyog Mitra</string>
+    <string name="visitor_name">Name of the visitor</string>
+    <string name="visitorPhoneNumber">Mobile Number of the Visitor</string>
+    <string name="visitorTelephoneNumber">Telephone Number of the Visitor</string>
+    <string name="organisation_name">Organisation Name</string>
+    <string name="about">Ease of doing business in Assam aims to create a platform for providing best support towards the prospective and existing business community in the state and drives forward the state\'s vision of prosperity for all - by employing technology, innovation, inclusivity and sustainability as key factors for development. It provides objective measures of business regulations.</string>
+    <string name="about_more">Ease of Doing Business in Assam encourages economies to compete towards more efficient regulation; it looks at domestic small and medium-size companies and measures the regulations applying to them through their life cycle. Government of Assam is there to guide and help you set up your Industry in the State of Assam.</string>
+    <!--to toggle the open close button
+        of the navigation drawer-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
