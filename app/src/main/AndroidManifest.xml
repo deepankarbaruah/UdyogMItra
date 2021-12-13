@@ -17,9 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UdyogMItra.NoActionBar">
         <activity
-            android:name=".GMRemarks"
-            android:exported="true" />
-        <activity
             android:name=".GMHome"
             android:exported="true" />
         <activity
