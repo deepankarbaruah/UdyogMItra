@@ -120,7 +120,7 @@ public class GMLogin extends AppCompatActivity {
                     Boolean result = myDbHelper.getAccess(str_userName,str_password);
                     Log.d("mydb","Result : " + result);
 
-                    if(result == true){
+                    if(result){
 
                         Toast toast=Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT);
                         toast.show();

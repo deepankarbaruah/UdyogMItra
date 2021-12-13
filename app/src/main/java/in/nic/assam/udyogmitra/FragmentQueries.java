@@ -8,7 +8,10 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +31,7 @@ public class FragmentQueries extends Fragment {
     private VisitorRecyclerViewAdapter visitorRecyclerViewAdapter;
     private ArrayList<Visitor> visitorArrayList;
     private ArrayAdapter<String> arrayAdapter;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     // creating constant keys for shared preferences.
     public static final String SHARED_PREFS = "shared_prefs";
@@ -50,8 +54,8 @@ public class FragmentQueries extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    String mParam1;
+    String mParam2;
 
     public FragmentQueries() {
         // Required empty public constructor
@@ -96,6 +100,7 @@ public class FragmentQueries extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
 
         //Connecting to the database
         dbHelper db = new dbHelper(getContext());
@@ -109,6 +114,41 @@ public class FragmentQueries extends Fragment {
         //Use your recyclerView
         visitorRecyclerViewAdapter = new VisitorRecyclerViewAdapter(getContext(), visitorArrayList);
         recyclerView.setAdapter(visitorRecyclerViewAdapter);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.d("getxxx","listener called");
+                swipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(true);
+                        // Get all contacts
+                        visitorArrayList = db.getVisitorList(gmHome.district_name);
+
+                        //Use your recyclerView
+                        visitorRecyclerViewAdapter = new VisitorRecyclerViewAdapter(getContext(), visitorArrayList);
+                        recyclerView.setAdapter(visitorRecyclerViewAdapter);
+
+                        Handler mHandler=new Handler();
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                swipeRefreshLayout.setRefreshing(false);
+                                Toast.makeText(getContext(), "Updated!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }, 1000);
+
+                    }
+                });
+
+                swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                        android.R.color.holo_green_light,
+                        android.R.color.holo_orange_light,
+                        android.R.color.holo_red_light);
+            }
+        });
 
         return view;
     }

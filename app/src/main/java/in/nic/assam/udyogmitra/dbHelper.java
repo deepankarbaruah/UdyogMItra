@@ -8,7 +8,10 @@ import android.util.Log;
 
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class dbHelper extends SQLiteOpenHelper {
 
@@ -22,6 +25,7 @@ public class dbHelper extends SQLiteOpenHelper {
     private static final String COL_4 = "district_name";
     private static final String COL_5 = "purpose";
     private static final String COL_6 = "gm_remarks";
+    private static final String COL_7 = "date_of_sub";
 
 
     public dbHelper(Context context) {
@@ -38,7 +42,8 @@ public class dbHelper extends SQLiteOpenHelper {
                 + COL_3 + " TEXT,"
                 + COL_4 + " TEXT,"
                 + COL_5 + " TEXT,"
-                + COL_6 + " TEXT"
+                + COL_6 + " TEXT,"
+                + COL_7 + " TEXT"
                 + ")";
 
         db.execSQL(create_table_query);
@@ -61,6 +66,7 @@ public class dbHelper extends SQLiteOpenHelper {
         values.put(COL_4, visitor.getDistrict_name());
         values.put(COL_5, visitor.getPurpose());
         values.put(COL_6, visitor.getRemarks());
+        values.put(COL_7, new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()));
 
 
         db.insert(TABLE_NAME, null, values);
@@ -106,6 +112,7 @@ public class dbHelper extends SQLiteOpenHelper {
                 visitor.setDistrict_name(cursor.getString(4));
                 visitor.setPurpose(cursor.getString(5));
                 visitor.setRemarks(cursor.getString(6));
+                visitor.setDate_of_sub(cursor.getString(7));
                 visitorArrayList.add(visitor);
             }while(cursor.moveToNext());
         }

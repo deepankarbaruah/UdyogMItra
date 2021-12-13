@@ -9,13 +9,14 @@ public class Visitor {
     private String district_name;
     private String purpose;
     private String remarks;
+    private String date_of_sub;
 
     public Visitor() {
 
     }
 
 
-    public Visitor(String visitorName, String organisationName, String visitorNumber, String telephoneNumber, String district_name, String purpose, String remarks) {
+    public Visitor(String visitorName, String organisationName, String visitorNumber, String telephoneNumber, String district_name, String purpose, String remarks, String date_of_sub) {
         this.visitorName = visitorName;
         this.organisationName = organisationName;
         this.visitorNumber = visitorNumber;
@@ -23,6 +24,7 @@ public class Visitor {
         this.district_name = district_name;
         this.purpose = purpose;
         this.remarks = remarks;
+        this.date_of_sub = date_of_sub;
     }
 
     public String getVisitorName() {
@@ -49,6 +51,14 @@ public class Visitor {
 
     public String getPurpose() {
         return purpose;
+    }
+
+    public String getDate_of_sub() {
+        return date_of_sub;
+    }
+
+    public void setDate_of_sub(String date_of_sub) {
+        this.date_of_sub = date_of_sub;
     }
 
     public void setVisitorName(String visitorName) {

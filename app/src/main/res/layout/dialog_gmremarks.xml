@@ -113,6 +113,30 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
+                            android:text="Date of Submission :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/date_of_sub"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
                             android:text="Remarks: "
                             android:textStyle="bold"
                             android:textSize="18sp"
