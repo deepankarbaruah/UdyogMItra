@@ -169,12 +169,12 @@ public class FragmentForm extends Fragment {
                     visitorName.setError("Please Enter Your Name");
                     return;
                 }
-                if(organisationName.getText().toString().equals("")){
+                if(TextUtils.isEmpty(organisationName.getText().toString())){
                     organisationName.requestFocus();
                     organisationName.setError("Please Enter the Organisation Name");
                     return;
                 }
-                if(visitorNumber.getText().toString().equals("")){
+                if(TextUtils.isEmpty(visitorNumber.getText().toString())){
                     visitorNumber.requestFocus();
                     visitorNumber.setError("Please Enter Your Number");
                     return;
@@ -203,7 +203,7 @@ public class FragmentForm extends Fragment {
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage("Do you want to Submit?")
+                builder.setMessage("Details has been shared to the concerned authority.")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -234,7 +234,6 @@ public class FragmentForm extends Fragment {
     public static boolean isValidMobile(String phone) {
         boolean check = false;
         if (!Pattern.matches("[a-zA-Z]+", phone)) {
-            //if (phone.length() < 9 || phone.length() > 13) {
             if(phone.length() != 10) {
                 check = false;
                 // txtPhone.setError("Not Valid Number");
@@ -246,23 +245,6 @@ public class FragmentForm extends Fragment {
         }
         return check;
     }
-
-//    private void setSpinnerError(Spinner spinner, String error){
-//        View selectedView = spinner.getSelectedView();
-//        if (selectedView != null && selectedView instanceof TextView) {
-//            spinner.requestFocus();
-//            TextView selectedTextView = (TextView) selectedView;
-//            // any name of the error will do
-//            selectedTextView.setError("error");
-//            //text color in which you want your error message to be displayed
-//            selectedTextView.setTextColor(Color.RED);
-//            // actual error message
-//            selectedTextView.setText(error);
-//            // to open the spinner list if error is found.
-//            //spinner.performClick();
-//
-//        }
-//    }
 
 
 }

@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,21 +17,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecyclerViewAdapter.ViewHolder> {
 
-    private Context context;
-    private List<Visitor> visitorsList;
+    private final Context context;
+    private final List<Visitor> visitorsList;
 
     Dialog dialog;
     EditText remarks;
     Button btnSave;
     String editRemarks;
-    TextView displayName, displayOrgName, displayPhoneNumber, displayPurpose;
-
+    TextView tvDisplayName, tvDisplayOrgName, tvDisplayPhoneNumber, tvDisplayPurpose, tvDisplayDate_of_sub;
 
 
     public VisitorRecyclerViewAdapter(Context context, List<Visitor> visitorsList) {
@@ -51,11 +56,12 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
     public void onBindViewHolder(@NonNull VisitorRecyclerViewAdapter.ViewHolder holder, int position) {
         Visitor visitor = visitorsList.get(position);
 
-        holder.visitorName.setText(visitor.getVisitorName());
-        holder.organisationName.setText(visitor.getOrganisationName());
-        holder.phoneNum.setText(visitor.getVisitorNumber());
-        holder.purpose.setText(visitor.getPurpose());
-        holder.remark.setText(visitor.getRemarks());
+        holder.tvVisitorName.setText(visitor.getVisitorName());
+        holder.tvOrganisationName.setText(visitor.getOrganisationName());
+        holder.tvPhoneNum.setText(visitor.getVisitorNumber());
+        holder.tvPurpose.setText(visitor.getPurpose());
+        holder.tvRemark.setText(visitor.getRemarks());
+        holder.tvDate_of_sub.setText(visitor.getDate_of_sub());
 
     }
 
@@ -66,21 +72,23 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView visitorName;
-        public TextView organisationName;
-        public TextView phoneNum;
-        public TextView purpose;
-        public TextView remark;
+        public TextView tvVisitorName;
+        public TextView tvOrganisationName;
+        public TextView tvPhoneNum;
+        public TextView tvPurpose;
+        public TextView tvRemark;
+        public TextView tvDate_of_sub;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            visitorName = itemView.findViewById(R.id.visitorName);
-            organisationName = itemView.findViewById(R.id.organisationName);
-            phoneNum = itemView.findViewById(R.id.phoneNum);
-            purpose = itemView.findViewById(R.id.purpose);
-            remark = itemView.findViewById(R.id.remark);
+            tvVisitorName = itemView.findViewById(R.id.visitorName);
+            tvOrganisationName = itemView.findViewById(R.id.organisationName);
+            tvPhoneNum = itemView.findViewById(R.id.phoneNum);
+            tvPurpose = itemView.findViewById(R.id.purpose);
+            tvRemark = itemView.findViewById(R.id.remark);
+            tvDate_of_sub = itemView.findViewById(R.id.date_of_sub);
 
         }
 
@@ -93,6 +101,7 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
             String organisation = visitor.getOrganisationName();
             String phoneNumber = visitor.getVisitorNumber();
             String purpose = visitor.getPurpose();
+            String date_of_sub = visitor.getDate_of_sub();
             String visitorSearchDistrict = visitor.getDistrict_name();
 
 
@@ -102,61 +111,41 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
             dialog.setCancelable(true); //Optional
             dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
             // Capture the layout's TextView and set the string as its text
-            displayName = (TextView) dialog.findViewById(R.id.name);
-            displayOrgName = (TextView) dialog.findViewById(R.id.organisation);
-            displayPhoneNumber = (TextView) dialog.findViewById(R.id.phone);
-            displayPurpose = (TextView) dialog.findViewById(R.id.purpose);
+            tvDisplayName = (TextView) dialog.findViewById(R.id.name);
+            tvDisplayOrgName = (TextView) dialog.findViewById(R.id.organisation);
+            tvDisplayPhoneNumber = (TextView) dialog.findViewById(R.id.phone);
+            tvDisplayPurpose = (TextView) dialog.findViewById(R.id.purpose);
+            tvDisplayDate_of_sub = (TextView) dialog.findViewById(R.id.date_of_sub);
             remarks = (EditText) dialog.findViewById(R.id.remarks);
             btnSave = (Button) dialog.findViewById(R.id.save);
 
-            Toast.makeText(context, "loading", Toast.LENGTH_SHORT).show();
 
-//            displayName.setText(name);
-//            displayOrgName.setText(organisation);
-//            displayPhoneNumber.setText(phoneNumber);
-//            displayPurpose.setText(purpose);
-
-            displayName.setText("YES");
+            tvDisplayName.setText(name);
+            tvDisplayOrgName.setText(organisation);
+            tvDisplayPhoneNumber.setText(phoneNumber);
+            tvDisplayPurpose.setText(purpose);
+            tvDisplayDate_of_sub.setText(date_of_sub);
             dialog.show();
 
-//
-//            Intent intent = new Intent(context, GMRemarks.class);
-//            intent.putExtra("name", name);
-//            intent.putExtra("organisation", organisation);
-//            intent.putExtra("number", phoneNumber);
-//            intent.putExtra("purpose", purpose);
-//            intent.putExtra("district", visitorSearchDistrict);
-//            view.getContext().startActivity(intent);
-//            Log.d("ClickFromViewHolder", "Clicked");
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(TextUtils.isEmpty(remarks.getText().toString())){
+                        remarks.requestFocus();
+                        remarks.setError("Give Some Remarks !");
+                    }
 
-//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//            builder.setPositiveButton("OKAY", (dialog, which) -> {
-//                dialog.dismiss();
-////                listener.onPositiveButtonClicked();
-//
-//            });
-//
-//            builder.setNegativeButton("NOPE", (dialog, which) -> {
-//                dialog.dismiss();
-////                listener.onNegativeButtonClicked();
-//
-//            });
-//            builder.setTitle(context.getResources().getString(R.string.app_name));
-//            builder.setMessage("ALERT....");
-//            builder.setIcon(android.R.drawable.ic_dialog_alert);
-//            builder.setCancelable(false);
-//            builder.create().show();
+                    else{
+                        editRemarks = remarks.getText().toString();
+                        dbHelper db = new dbHelper(context.getApplicationContext());
+                        db.saveRemarks(visitorSearchDistrict,name,editRemarks);
+                        Toast toast = Toast.makeText(context,"Remarks Saved...",Toast.LENGTH_SHORT);
+                        toast.show();
+                        dialog.dismiss();
 
-//            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-//// ...Irrelevant code for customizing the buttons and title
-//            LayoutInflater inflater = context.getLayoutInflater();
-//            View dialogView = inflater.inflate(R.layout.alert_label_editor, null);
-//            dialogBuilder.setView(dialogView);
-//
-//            EditText editText = (EditText) dialogView.findViewById(R.id.label_field);
-//            editText.setText("test label");
-//            AlertDialog alertDialog = dialogBuilder.create();
-//            alertDialog.show();
+                    }
+                }
+            });
 
         }
     }

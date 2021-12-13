@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class ContactDetails extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
     ArrayList<GeneralManager> generalManagerArrayList;
     private ArrayAdapter<String> arrayAdapter;
+    ImageView homeIcon;
 
 
     Cursor cursor = null;
@@ -31,6 +33,7 @@ public class ContactDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_details);
 
+        homeIcon = findViewById(R.id.home_icon);
         //Recyclerview initialization
         recyclerView = findViewById(R.id.recyclerView);
 //        btnHome = findViewById(R.id.btnHome);
@@ -39,32 +42,15 @@ public class ContactDetails extends AppCompatActivity {
 
         //Connecting to the database
         DataBaseHelper myDbHelper = new DataBaseHelper(ContactDetails.this);
-//        try {
-//            myDbHelper.createDataBase();
-//        } catch (IOException ioe) {
-//            throw new Error("Unable to create database");
-//        }
-//        try {
-//            myDbHelper.openDataBase();
-//        } catch (SQLException sqle) {
-//            throw sqle;
-//        }
 
+        homeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-
-
-
-
-//        btnHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intentHome = new Intent(getApplicationContext(), Home.class);
-//                startActivity(intentHome);
-//                finish();
-//
-//            }
-//        });
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -74,19 +60,6 @@ public class ContactDetails extends AppCompatActivity {
         String district = extras.getString("selected_district");
         Log.d("mydb","district_select: " +district);
 
-        // Generate the query to read from the database
-//        cursor = myDbHelper.query("gm_details", null, "district_name=?", district_name, null, null, null);
-//        cursor = myDbHelper.getReadableDatabase().rawQuery("SELECT * FROM gm_details WHERE district_name=?",new String[]{district});
-//            //Loop through now
-//            if(cursor.moveToFirst()){
-//                do{
-//                    GeneralManager generalManager = new GeneralManager();
-//                    generalManager.setName(cursor.getString(2));
-//                    generalManager.setDesignation(cursor.getString(3));
-//                    generalManager.setPhoneNumber(cursor.getString(4));
-//                    generalManagerArrayList.add(generalManager);
-//                }while(cursor.moveToNext());
-//            }
 
         // Get all contacts
         generalManagerArrayList = myDbHelper.getGeneralManager(district);

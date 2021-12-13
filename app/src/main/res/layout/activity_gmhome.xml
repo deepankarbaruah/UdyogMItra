@@ -22,7 +22,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:subtitle="Govt. of Assam"
-            app:title="Udyog Mitra">
+            app:subtitleTextColor="@color/white"
+            app:title="Udyog Mitra"
+            app:titleTextColor="@color/white">
 
             <LinearLayout
                 android:layout_width="wrap_content"

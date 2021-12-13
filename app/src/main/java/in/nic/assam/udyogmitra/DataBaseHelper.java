@@ -118,8 +118,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             try {
                 copyDataBase();
             } catch (IOException e) {
-                //Toast.makeText(getApplicationContext(), "Some exception occures ", Toast.LENGTH_SHORT).show();
-                //  System.out.println("Some exception occures " + e);
+
             }
     }
 
