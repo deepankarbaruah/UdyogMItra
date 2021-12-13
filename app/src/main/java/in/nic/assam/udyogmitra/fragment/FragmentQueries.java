@@ -1,6 +1,5 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.fragment;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,6 +18,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import in.nic.assam.udyogmitra.GMHome;
+import in.nic.assam.udyogmitra.R;
+import in.nic.assam.udyogmitra.model.Visitor;
+import in.nic.assam.udyogmitra.adapter.VisitorRecyclerViewAdapter;
+import in.nic.assam.udyogmitra.helper.dbHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -106,7 +111,7 @@ public class FragmentQueries extends Fragment {
         dbHelper db = new dbHelper(getContext());
 
         GMHome gmHome=(GMHome) getActivity();
-        Toast.makeText(getContext(), ""+gmHome.district_name, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), ""+gmHome.district_name, Toast.LENGTH_SHORT).show();
 
         // Get all contacts
         visitorArrayList = db.getVisitorList(gmHome.district_name);

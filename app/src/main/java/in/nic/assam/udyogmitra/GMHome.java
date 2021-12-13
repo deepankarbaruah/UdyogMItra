@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
@@ -22,13 +21,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 import net.sqlcipher.database.SQLiteDatabase;
 
 import java.io.IOException;
+
+import in.nic.assam.udyogmitra.fragment.FragmentGmHome;
+import in.nic.assam.udyogmitra.fragment.FragmentHelp;
+import in.nic.assam.udyogmitra.fragment.FragmentProfile;
+import in.nic.assam.udyogmitra.fragment.FragmentQueries;
+import in.nic.assam.udyogmitra.helper.DataBaseHelper;
 
 public class GMHome extends AppCompatActivity {
 
@@ -108,6 +112,10 @@ public class GMHome extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.frame_layout, new FragmentGmHome());
+        tx.commit();
+
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -117,7 +125,7 @@ public class GMHome extends AppCompatActivity {
                 Class fragmentClass = null;
                 switch (item.getItemId()) {
                     case R.id.nav_gm_home:
-                        fragmentClass = FragmentHome.class;
+                        fragmentClass = FragmentGmHome.class;
                         break;
 
                     case R.id.nav_queries:
@@ -133,7 +141,7 @@ public class GMHome extends AppCompatActivity {
                         break;
 //
                     default:
-                        fragmentClass = FragmentHome.class;
+                        fragmentClass = FragmentGmHome.class;
                         break;
                 }
                 try {

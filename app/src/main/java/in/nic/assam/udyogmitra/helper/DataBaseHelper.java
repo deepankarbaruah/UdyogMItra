@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.helper;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -12,6 +12,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.nic.assam.udyogmitra.model.District;
+import in.nic.assam.udyogmitra.model.GeneralManager;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 

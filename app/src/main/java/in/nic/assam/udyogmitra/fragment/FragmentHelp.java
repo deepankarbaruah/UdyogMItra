@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.fragment;
 
 import android.os.Bundle;
 
@@ -24,8 +24,6 @@ public class FragmentHelp extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=super.onCreateView(inflater, container, savedInstanceState);
 
-        GMHome gmHome=(GMHome) getActivity();
-        Toast.makeText(getContext(), ""+gmHome.district_name, Toast.LENGTH_SHORT).show();
         return view;
     }
 

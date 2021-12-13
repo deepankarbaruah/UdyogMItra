@@ -1,18 +1,21 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.fragment;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
+import in.nic.assam.udyogmitra.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentProfile#newInstance} factory method to
+ * Use the {@link FragmentAbout#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentProfile extends Fragment {
+public class FragmentAbout extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +26,7 @@ public class FragmentProfile extends Fragment {
     String mParam1;
     String mParam2;
 
-    public FragmentProfile() {
+    public FragmentAbout() {
         // Required empty public constructor
     }
 
@@ -36,8 +39,8 @@ public class FragmentProfile extends Fragment {
      * @return A new instance of fragment Fragment_About.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentProfile newInstance(String param1, String param2) {
-        FragmentProfile fragment = new FragmentProfile();
+    public static FragmentAbout newInstance(String param1, String param2) {
+        FragmentAbout fragment = new FragmentAbout();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,6 +61,6 @@ public class FragmentProfile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 }

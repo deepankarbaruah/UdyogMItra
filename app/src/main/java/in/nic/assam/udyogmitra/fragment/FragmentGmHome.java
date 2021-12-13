@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.fragment;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import in.nic.assam.udyogmitra.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentAbout#newInstance} factory method to
+ * Use the {@link FragmentGmHome#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentAbout extends Fragment {
+public class FragmentGmHome extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,10 +23,10 @@ public class FragmentAbout extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    String mParam1;
-    String mParam2;
+    private String mParam1;
+    private String mParam2;
 
-    public FragmentAbout() {
+    public FragmentGmHome() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class FragmentAbout extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_About.
+     * @return A new instance of fragment FragmentGmHome.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentAbout newInstance(String param1, String param2) {
-        FragmentAbout fragment = new FragmentAbout();
+    public static FragmentGmHome newInstance(String param1, String param2) {
+        FragmentGmHome fragment = new FragmentGmHome();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class FragmentAbout extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        return inflater.inflate(R.layout.fragment_gm_home, container, false);
     }
 }

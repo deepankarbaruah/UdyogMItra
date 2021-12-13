@@ -4,7 +4,7 @@
       tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_home"
+        <item android:id="@+id/nav_visitor_home"
             android:icon="@drawable/ic_home"
             android:title="Home">
         </item>
@@ -12,6 +12,11 @@
         <item android:id="@+id/nav_form"
             android:icon="@drawable/ic_form"
             android:title="Enquiry Form">
+        </item>
+
+        <item android:id="@+id/nav_track"
+            android:icon="@drawable/ic_track"
+            android:title="Application Status">
         </item>
 
         <item android:id="@+id/nav_info"

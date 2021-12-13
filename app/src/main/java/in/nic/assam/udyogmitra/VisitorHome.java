@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -21,11 +24,19 @@ import net.sqlcipher.database.SQLiteDatabase;
 
 import java.io.IOException;
 
+import in.nic.assam.udyogmitra.fragment.FragmentAbout;
+import in.nic.assam.udyogmitra.fragment.FragmentForm;
+import in.nic.assam.udyogmitra.fragment.FragmentHelp;
+import in.nic.assam.udyogmitra.fragment.FragmentStatus;
+import in.nic.assam.udyogmitra.fragment.FragmentVisitorHome;
+import in.nic.assam.udyogmitra.helper.DataBaseHelper;
+
 public class VisitorHome extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navView;
+    ImageView homeIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +59,8 @@ public class VisitorHome extends AppCompatActivity {
             throw sqle;
         }
 
+
+        homeIcon = findViewById(R.id.home_icon);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -66,7 +79,18 @@ public class VisitorHome extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        homeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+            }
+        });
+
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.frame_layout, new FragmentVisitorHome());
+        tx.commit();
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -75,8 +99,8 @@ public class VisitorHome extends AppCompatActivity {
                 Fragment fragment = null;
                 Class fragmentClass = null;
                 switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        fragmentClass = FragmentHome.class;
+                    case R.id.nav_visitor_home:
+                        fragmentClass = FragmentVisitorHome.class;
                         break;
 
                     case R.id.nav_form:
@@ -90,9 +114,13 @@ public class VisitorHome extends AppCompatActivity {
                     case R.id.nav_help:
                         fragmentClass = FragmentHelp.class;
                         break;
+
+                    case R.id.nav_track:
+                        fragmentClass = FragmentStatus.class;
+                        break;
 //
                     default:
-                        fragmentClass = FragmentHome.class;
+                        fragmentClass = FragmentVisitorHome.class;
                         break;
                 }
                 try {

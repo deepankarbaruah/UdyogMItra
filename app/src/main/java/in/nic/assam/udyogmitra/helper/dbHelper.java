@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+
+import in.nic.assam.udyogmitra.model.Visitor;
 
 public class dbHelper extends SQLiteOpenHelper {
 

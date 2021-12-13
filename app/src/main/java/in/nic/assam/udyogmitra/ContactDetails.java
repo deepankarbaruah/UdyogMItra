@@ -6,16 +6,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.IOException;
 import java.util.ArrayList;
+
+import in.nic.assam.udyogmitra.adapter.RecyclerViewAdapter;
+import in.nic.assam.udyogmitra.helper.DataBaseHelper;
+import in.nic.assam.udyogmitra.model.GeneralManager;
 
 public class ContactDetails extends AppCompatActivity {
 
