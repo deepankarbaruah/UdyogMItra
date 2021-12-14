@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import in.nic.assam.udyogmitra.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -51,12 +51,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //checkDB = SQLiteDatabase.openDatabase(myPath,PASS_PHRASE, null, SQLiteDatabase.OPEN_READONLY);
         File dbFile = this.myContext.getDatabasePath(myPath);
         ///checkDB=dbFile.exists();
-        if (!dbFile.exists()) {
-            // Database does not exist so copy it from assets here
-            return false;
-        } else {
-            return true;
-        }
+        // Database does not exist so copy it from assets here
+        return dbFile.exists();
 
         //   return checkDB != null ? true : false;
     }

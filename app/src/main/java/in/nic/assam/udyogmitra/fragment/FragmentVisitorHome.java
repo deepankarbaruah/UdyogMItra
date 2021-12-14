@@ -21,9 +21,9 @@ import in.nic.assam.udyogmitra.adapter.SliderPageAdapter;
 
 public class FragmentVisitorHome extends Fragment {
 
-    private List<SliderModelClass> listItems;
-    private ViewPager page;
-    private TabLayout tabLayout;
+    List<SliderModelClass> listItems;
+    ViewPager page;
+    TabLayout tabLayout;
 
     public FragmentVisitorHome() {
         // Required empty public constructor

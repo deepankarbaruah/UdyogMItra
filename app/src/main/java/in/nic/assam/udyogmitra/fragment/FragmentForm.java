@@ -28,7 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import in.nic.assam.udyogmitra.ContactDetails;
+import in.nic.assam.udyogmitra.activities.ContactDetails;
 import in.nic.assam.udyogmitra.helper.DataBaseHelper;
 import in.nic.assam.udyogmitra.model.District;
 import in.nic.assam.udyogmitra.R;
@@ -52,10 +52,7 @@ public class FragmentForm extends Fragment {
     EditText purposeEdt;
     Button buttonSubmit;
     String visName,orgName,visNum,visTel,purpose;
-    String selectedDistrict;
     final Visitor newVisitor = new Visitor();
-    int flag = 0;
-    Cursor cursor = null;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -128,16 +125,9 @@ public class FragmentForm extends Fragment {
         final ArrayAdapter<District> spinnerDistrictArrayAdapter = new ArrayAdapter<District>(getContext(),R.layout.spinner_item,districtList){
             @Override
             public boolean isEnabled(int position){
-                if(position == 0)
-                {
-                    // Disable the first item from Spinner
-                    // First item will be use for hint
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                // Disable the first item from Spinner
+                // First item will be use for hint
+                return position != 0;
             }
 
             @Override

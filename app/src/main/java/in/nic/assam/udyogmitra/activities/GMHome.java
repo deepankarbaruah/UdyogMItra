@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -28,6 +28,7 @@ import net.sqlcipher.database.SQLiteDatabase;
 
 import java.io.IOException;
 
+import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.fragment.FragmentGmHome;
 import in.nic.assam.udyogmitra.fragment.FragmentHelp;
 import in.nic.assam.udyogmitra.fragment.FragmentProfile;

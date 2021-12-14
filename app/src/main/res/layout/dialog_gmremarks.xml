@@ -151,6 +151,7 @@
                             android:fontFamily="@font/poppinsmedium"
                             android:textSize="18sp"
                             android:layout_weight="1"
+                            android:hint="Remarks"
                             android:singleLine="false"/>
                 </TableRow>
 

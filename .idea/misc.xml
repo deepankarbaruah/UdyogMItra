@@ -9,6 +9,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/drawable-v24/selected_indicator.xml" value="0.2890625" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/drawable-v24/slider_indicator.xml" value="0.2890625" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/drawable-v24/toolbar_border.xml" value="0.1" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/drawable/login_background.xml" value="0.2890625" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/activity_contact_details.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/activity_gmhome.xml" value="0.22" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/activity_gmlogin.xml" value="0.25" />
@@ -18,11 +19,13 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/activity_visitor_home.xml" value="0.18" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/activity_visitor_queries.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/custom_dialog.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/demo.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/dialog_gmremarks.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/footer.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment__about.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment__profile.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment__queries.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment_about.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment_form.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment_gm_home.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/UdyogMItra/app/src/main/res/layout/fragment_home.xml" value="0.26875" />

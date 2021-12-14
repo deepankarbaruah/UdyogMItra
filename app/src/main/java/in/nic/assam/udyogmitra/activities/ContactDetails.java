@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.adapter.RecyclerViewAdapter;
 import in.nic.assam.udyogmitra.helper.DataBaseHelper;
 import in.nic.assam.udyogmitra.model.GeneralManager;
@@ -23,11 +24,8 @@ public class ContactDetails extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerViewAdapter recyclerViewAdapter;
     ArrayList<GeneralManager> generalManagerArrayList;
-    private ArrayAdapter<String> arrayAdapter;
     ImageView homeIcon;
 
-
-    Cursor cursor = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +51,6 @@ public class ContactDetails extends AppCompatActivity {
             }
         });
 
-
-
-        String district_name = "SONITPUR";
         Bundle extras = getIntent().getExtras();
         //The key argument here must match that used in the other activity
         String district = extras.getString("selected_district");

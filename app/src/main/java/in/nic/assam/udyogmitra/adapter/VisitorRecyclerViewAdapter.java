@@ -67,12 +67,12 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView tvVisitorName;
-        public TextView tvOrganisationName;
-        public TextView tvPhoneNum;
-        public TextView tvPurpose;
-        public TextView tvRemark;
-        public TextView tvDate_of_sub;
+        public final TextView tvVisitorName;
+        public final TextView tvOrganisationName;
+        public final TextView tvPhoneNum;
+        public final TextView tvPurpose;
+        public final TextView tvRemark;
+        public final TextView tvDate_of_sub;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

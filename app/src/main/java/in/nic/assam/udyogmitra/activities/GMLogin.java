@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.security.crypto.EncryptedSharedPreferences;
@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
+import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.helper.DataBaseHelper;
 import in.nic.assam.udyogmitra.model.GeneralManager;
 

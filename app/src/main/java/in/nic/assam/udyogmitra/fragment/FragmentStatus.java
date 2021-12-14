@@ -23,8 +23,8 @@ public class FragmentStatus extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    String mParam1;
+    String mParam2;
 
     public FragmentStatus() {
         // Required empty public constructor

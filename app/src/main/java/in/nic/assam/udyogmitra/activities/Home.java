@@ -1,4 +1,4 @@
-package in.nic.assam.udyogmitra;
+package in.nic.assam.udyogmitra.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 
 import net.sqlcipher.database.SQLiteDatabase;
+
+import in.nic.assam.udyogmitra.R;
 
 public class Home extends AppCompatActivity {
 

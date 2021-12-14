@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import in.nic.assam.udyogmitra.GMHome;
+import in.nic.assam.udyogmitra.activities.GMHome;
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.model.Visitor;
 import in.nic.assam.udyogmitra.adapter.VisitorRecyclerViewAdapter;
@@ -51,7 +51,6 @@ public class FragmentQueries extends Fragment {
     SharedPreferences sharedpreferences;
     String usernameShared, passwordShared;
 
-    Cursor cursor = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -17,22 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UdyogMItra.NoActionBar">
         <activity
-            android:name=".GMHome"
+            android:name=".activities.GMHome"
             android:exported="true" />
         <activity
-            android:name=".GMLogin"
+            android:name=".activities.GMLogin"
             android:exported="true" />
         <activity
-            android:name=".ContactDetails"
+            android:name=".activities.ContactDetails"
             android:exported="true" />
         <activity
-            android:name=".VisitorHome"
+            android:name=".activities.VisitorHome"
             android:exported="true" />
         <activity
-            android:name=".Home"
+            android:name=".activities.Home"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
