@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
@@ -58,7 +59,7 @@ public class GMHome extends AppCompatActivity {
         SQLiteDatabase.loadLibs(this);
 
         /***
-         * Creating master_database
+         * Connecting to master_database
          */
         DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
         try {
@@ -168,9 +169,14 @@ public class GMHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
                 Intent intent = new Intent(getApplicationContext(), GMHome.class);
                 intent.putExtra("gm_district",district_name);
-                startActivity(intent);
+                intent.putExtra("gm_district",district_name);
+                intent.putExtra("gm_name",gmName);
+                intent.putExtra("gm_id",gmId);
+                startActivity(intent,options.toBundle());
             }
         });
 
@@ -181,7 +187,7 @@ public class GMHome extends AppCompatActivity {
                 builder.setMessage("Do you want to logout?")
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                startActivity(new Intent(GMHome.this, Home.class));
+                                startActivity(new Intent(getApplicationContext(), VisitorHome.class));
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {

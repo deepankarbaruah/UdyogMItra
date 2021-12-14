@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -84,7 +85,7 @@ public class VisitorHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(), Home.class);
+                Intent intent = new Intent(getApplicationContext(), VisitorHome.class);
                 startActivity(intent);
             }
         });
@@ -106,6 +107,12 @@ public class VisitorHome extends AppCompatActivity {
 
                     case R.id.nav_form:
                         fragmentClass = FragmentForm.class;
+                        break;
+
+                    case R.id.nav_gm_login:
+                        Intent intent = new Intent(getApplicationContext(), GMLogin.class);
+                        ActivityOptions options=ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
+                        startActivity(intent,options.toBundle());
                         break;
 
                     case R.id.nav_info:

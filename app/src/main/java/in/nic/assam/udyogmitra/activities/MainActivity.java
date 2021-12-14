@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
-                startActivity(new Intent(MainActivity.this, Home.class),options.toBundle());
+                startActivity(new Intent(MainActivity.this, VisitorHome.class),options.toBundle());
                 finish();
             }
         }, SPLASH_SCREEN_TIME_OUT);

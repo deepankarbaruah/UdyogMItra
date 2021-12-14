@@ -46,7 +46,7 @@ public class ContactDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(), Home.class);
+                Intent intent = new Intent(getApplicationContext(), VisitorHome.class);
                 startActivity(intent);
             }
         });

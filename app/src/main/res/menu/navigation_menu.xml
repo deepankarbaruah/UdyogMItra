@@ -19,6 +19,11 @@
             android:title="Application Status">
         </item>
 
+        <item android:id="@+id/nav_gm_login"
+            android:icon="@drawable/ic_lock"
+            android:title="GM Login">
+        </item>
+
         <item android:id="@+id/nav_info"
             android:icon="@drawable/ic_info"
             android:title="About Us">
