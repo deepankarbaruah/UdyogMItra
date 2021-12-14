@@ -10,13 +10,14 @@ public class Visitor {
     private String purpose;
     private String remarks;
     private String date_of_sub;
+    private int remarks_status;
 
     public Visitor() {
 
     }
 
 
-    public Visitor(String visitorName, String organisationName, String visitorNumber, String telephoneNumber, String district_name, String purpose, String remarks, String date_of_sub) {
+    public Visitor(String visitorName, String organisationName, String visitorNumber, String telephoneNumber, String district_name, String purpose, String remarks, String date_of_sub, int remarks_status) {
         this.visitorName = visitorName;
         this.organisationName = organisationName;
         this.visitorNumber = visitorNumber;
@@ -25,6 +26,7 @@ public class Visitor {
         this.purpose = purpose;
         this.remarks = remarks;
         this.date_of_sub = date_of_sub;
+        this.remarks_status = remarks_status;
     }
 
     public String getVisitorName() {
@@ -55,6 +57,14 @@ public class Visitor {
 
     public String getDate_of_sub() {
         return date_of_sub;
+    }
+
+    public int getRemarks_status() {
+        return remarks_status;
+    }
+
+    public void setRemarks_status(int remarks_status) {
+        this.remarks_status = remarks_status;
     }
 
     public void setDate_of_sub(String date_of_sub) {

@@ -32,8 +32,9 @@ import java.io.IOException;
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.fragment.FragmentGmHome;
 import in.nic.assam.udyogmitra.fragment.FragmentHelp;
+import in.nic.assam.udyogmitra.fragment.FragmentPenQueries;
 import in.nic.assam.udyogmitra.fragment.FragmentProfile;
-import in.nic.assam.udyogmitra.fragment.FragmentQueries;
+import in.nic.assam.udyogmitra.fragment.FragmentSubQueries;
 import in.nic.assam.udyogmitra.helper.DataBaseHelper;
 
 public class GMHome extends AppCompatActivity {
@@ -130,8 +131,12 @@ public class GMHome extends AppCompatActivity {
                         fragmentClass = FragmentGmHome.class;
                         break;
 
-                    case R.id.nav_queries:
-                        fragmentClass = FragmentQueries.class;
+                    case R.id.nav_pen_queries:
+                        fragmentClass = FragmentPenQueries.class;
+                        break;
+
+                    case R.id.nav_sub_queries:
+                        fragmentClass = FragmentSubQueries.class;
                         break;
 
                     case R.id.nav_profile:
@@ -188,6 +193,7 @@ public class GMHome extends AppCompatActivity {
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 startActivity(new Intent(getApplicationContext(), VisitorHome.class));
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {

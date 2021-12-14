@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Name :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Organisation :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/organisation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Phone Number :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Purpose :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/purpose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Date of Submission :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/date_of_sub"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+
+                <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Remarks :"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_weight="0.5"/>
+
+                        <TextView
+                            android:id="@+id/remarks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="-----"
+                            android:textSize="18sp"
+                            android:layout_weight=".5"/>
+                </TableRow>
+
+<!--                <TableRow-->
+<!--                    android:layout_gravity="center">-->
+<!--                        <com.google.android.material.button.MaterialButton-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:id="@+id/save"-->
+<!--                            android:text="Save"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_weight="1"-->
+<!--                            />-->
+<!--                </TableRow>-->
+
+
+        </TableLayout>
+
+</LinearLayout>

@@ -198,6 +198,7 @@ public class FragmentForm extends Fragment {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
+                                newVisitor.setRemarks_status(0);
                                 db.addVisitor(newVisitor);
                                 Intent intentContactsDetails = new Intent(getContext(), ContactDetails.class);
                                 intentContactsDetails.putExtra("selected_district",dist_selected);

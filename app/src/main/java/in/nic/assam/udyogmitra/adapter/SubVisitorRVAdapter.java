@@ -3,7 +3,6 @@ package in.nic.assam.udyogmitra.adapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,44 +13,38 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import in.nic.assam.udyogmitra.R;
-import in.nic.assam.udyogmitra.fragment.FragmentGmHome;
 import in.nic.assam.udyogmitra.model.Visitor;
 import in.nic.assam.udyogmitra.helper.dbHelper;
 
-public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecyclerViewAdapter.MyViewHolder> {
+public class SubVisitorRVAdapter extends RecyclerView.Adapter<SubVisitorRVAdapter.MyViewHolder> {
 
     private final Context context;
     private final List<Visitor> visitorsList;
 
     Dialog dialog;
-    EditText remarks;
-    Button btnSave;
-    String editRemarks;
-    TextView tvDisplayName, tvDisplayOrgName, tvDisplayPhoneNumber, tvDisplayPurpose, tvDisplayDate_of_sub;
+    TextView tvDisplayName, tvDisplayOrgName, tvDisplayPhoneNumber, tvDisplayPurpose, tvDisplayDate_of_sub, tvRemarks;
 
 
-    public VisitorRecyclerViewAdapter(Context context, List<Visitor> visitorsList) {
+    public SubVisitorRVAdapter(Context context, List<Visitor> visitorsList) {
         this.context = context;
         this.visitorsList = visitorsList;
     }
 
     @NonNull
     @Override
-    public VisitorRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.visitorcard, parent,false);
+    public SubVisitorRVAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card, parent,false);
         return new MyViewHolder(view);
     }
 
     // What will happen after we create the viewHolder object
     @Override
-    public void onBindViewHolder(@NonNull VisitorRecyclerViewAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull SubVisitorRVAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Visitor visitor = visitorsList.get(position);
 
         holder.tvVisitorName.setText(visitor.getVisitorName());
@@ -77,7 +70,7 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
 
 
                 dialog=new Dialog(context);
-                dialog.setContentView(R.layout.dialog_gmremarks);
+                dialog.setContentView(R.layout.dialog_remarks_view);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.setCancelable(true); //Optional
                 dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
@@ -87,37 +80,16 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
                 tvDisplayPhoneNumber = (TextView) dialog.findViewById(R.id.phone);
                 tvDisplayPurpose = (TextView) dialog.findViewById(R.id.purpose);
                 tvDisplayDate_of_sub = (TextView) dialog.findViewById(R.id.date_of_sub);
-                remarks = (EditText) dialog.findViewById(R.id.remarks);
-                btnSave = (Button) dialog.findViewById(R.id.save);
-
+                tvRemarks = (TextView) dialog.findViewById(R.id.remarks);
 
                 tvDisplayName.setText(name);
                 tvDisplayOrgName.setText(organisation);
                 tvDisplayPhoneNumber.setText(phoneNumber);
                 tvDisplayPurpose.setText(purpose);
                 tvDisplayDate_of_sub.setText(date_of_sub);
-                remarks.setText(gmRemarks);
+                tvRemarks.setText(gmRemarks);
                 dialog.show();
 
-                btnSave.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(TextUtils.isEmpty(remarks.getText().toString())){
-                            remarks.requestFocus();
-                            remarks.setError("Give Some Remarks !");
-                        }
-
-                        else{
-                            editRemarks = remarks.getText().toString();
-                            dbHelper db = new dbHelper(context.getApplicationContext());
-                            db.saveRemarks(visitorSearchDistrict,name,editRemarks);
-                            Toast toast = Toast.makeText(context,"Remarks Saved...",Toast.LENGTH_SHORT);
-                            toast.show();
-                            dialog.dismiss();
-
-                        }
-                    }
-                });
             }
         });
 

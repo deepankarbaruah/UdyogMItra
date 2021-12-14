@@ -28,6 +28,7 @@ public class dbHelper extends SQLiteOpenHelper {
     private static final String COL_5 = "purpose";
     private static final String COL_6 = "gm_remarks";
     private static final String COL_7 = "date_of_sub";
+    private static final String COL_8 = "remarks_status";
 
 
     public dbHelper(Context context) {
@@ -45,7 +46,8 @@ public class dbHelper extends SQLiteOpenHelper {
                 + COL_4 + " TEXT,"
                 + COL_5 + " TEXT,"
                 + COL_6 + " TEXT,"
-                + COL_7 + " TEXT"
+                + COL_7 + " TEXT,"
+                + COL_8 + " INTEGER DEFAULT 0"
                 + ")";
 
         db.execSQL(create_table_query);
@@ -69,6 +71,7 @@ public class dbHelper extends SQLiteOpenHelper {
         values.put(COL_5, visitor.getPurpose());
         values.put(COL_6, visitor.getRemarks());
         values.put(COL_7, new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()));
+        values.put(COL_8, visitor.getRemarks_status());
 
 
         db.insert(TABLE_NAME, null, values);
@@ -89,6 +92,7 @@ public class dbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_6,gmRemarks);
+        contentValues.put(COL_8, 1);
         db.update(TABLE_NAME,contentValues, "visitor_name=? AND district_name=?", new String[]{visitorName,district});
         db.close();
 
@@ -100,6 +104,72 @@ public class dbHelper extends SQLiteOpenHelper {
 
         // Select All Query
         String selectQuery = "SELECT * FROM visitor_details_table WHERE district_name=?";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{districtName});
+
+        // looping through all rows and adding to list
+        if(cursor.moveToFirst()){
+            do{
+                Visitor visitor = new Visitor();
+                visitor.setVisitorName(cursor.getString(0));
+                visitor.setOrganisationName(cursor.getString(1));
+                visitor.setVisitorNumber(cursor.getString(2));
+                visitor.setDistrict_name(cursor.getString(4));
+                visitor.setPurpose(cursor.getString(5));
+                visitor.setRemarks(cursor.getString(6));
+                visitor.setDate_of_sub(cursor.getString(7));
+                visitorArrayList.add(visitor);
+            }while(cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning visitorArrayList
+        return visitorArrayList;
+    }
+
+    public ArrayList<Visitor> getSubVisitorList(String districtName){
+
+        ArrayList<Visitor> visitorArrayList = new ArrayList<Visitor>();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM visitor_details_table WHERE district_name=? AND remarks_status= 1 ";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{districtName});
+
+        // looping through all rows and adding to list
+        if(cursor.moveToFirst()){
+            do{
+                Visitor visitor = new Visitor();
+                visitor.setVisitorName(cursor.getString(0));
+                visitor.setOrganisationName(cursor.getString(1));
+                visitor.setVisitorNumber(cursor.getString(2));
+                visitor.setDistrict_name(cursor.getString(4));
+                visitor.setPurpose(cursor.getString(5));
+                visitor.setRemarks(cursor.getString(6));
+                visitor.setDate_of_sub(cursor.getString(7));
+                visitorArrayList.add(visitor);
+            }while(cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning visitorArrayList
+        return visitorArrayList;
+    }
+
+    public ArrayList<Visitor> getPenVisitorList(String districtName){
+
+        ArrayList<Visitor> visitorArrayList = new ArrayList<Visitor>();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM visitor_details_table WHERE district_name=? AND remarks_status= 0 ";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, new String[]{districtName});
