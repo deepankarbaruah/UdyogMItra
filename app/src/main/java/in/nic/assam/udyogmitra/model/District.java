@@ -1,5 +1,7 @@
 package in.nic.assam.udyogmitra.model;
 
+import androidx.annotation.NonNull;
+
 public class District {
 
     String districtName,districtCode;
@@ -21,6 +23,7 @@ public class District {
         this.districtCode = districtCode;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return districtName;

@@ -42,27 +42,24 @@ public class MainActivity extends AppCompatActivity {
         usernameShared = sharedpreferences.getString(USERNAME_KEY, null);
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
 
-                // calling method to edit values in shared prefs.
-                SharedPreferences.Editor editor = sharedpreferences.edit();
+            // calling method to edit values in shared prefs.
+            SharedPreferences.Editor editor = sharedpreferences.edit();
 
-                // below line will clear
-                // the data in shared prefs.
-                editor.clear();
+            // below line will clear
+            // the data in shared prefs.
+            editor.clear();
 
-                // below line will apply empty
-                // data to shared prefs.
-                editor.apply();
+            // below line will apply empty
+            // data to shared prefs.
+            editor.apply();
 
 
-                ActivityOptions options =
-                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
-                startActivity(new Intent(MainActivity.this, VisitorHome.class),options.toBundle());
-                finish();
-            }
+            ActivityOptions options =
+                    ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
+            startActivity(new Intent(MainActivity.this, VisitorHome.class),options.toBundle());
+            finish();
         }, SPLASH_SCREEN_TIME_OUT);
     }
 }

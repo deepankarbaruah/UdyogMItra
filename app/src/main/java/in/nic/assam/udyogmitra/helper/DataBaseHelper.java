@@ -193,7 +193,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public List<District> allDistrict(){
-        List<District> labels = new ArrayList<District>();
+        List<District> labels = new ArrayList<>();
         District selectDist = new District();
 
         selectDist.setDistrictName("Select District");
@@ -226,7 +226,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<GeneralManager> getGeneralManager(String districtName){
 
-        ArrayList<GeneralManager> generalManagerArrayList = new ArrayList<GeneralManager>();
+        ArrayList<GeneralManager> generalManagerArrayList = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT * FROM gm_details WHERE district_name=?";

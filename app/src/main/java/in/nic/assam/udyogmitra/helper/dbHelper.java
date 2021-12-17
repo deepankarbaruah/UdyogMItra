@@ -100,7 +100,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
     public ArrayList<Visitor> getVisitorList(String districtName){
 
-        ArrayList<Visitor> visitorArrayList = new ArrayList<Visitor>();
+        ArrayList<Visitor> visitorArrayList = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT * FROM visitor_details_table WHERE district_name=?";
@@ -133,7 +133,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
     public ArrayList<Visitor> getSubVisitorList(String districtName){
 
-        ArrayList<Visitor> visitorArrayList = new ArrayList<Visitor>();
+        ArrayList<Visitor> visitorArrayList = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT * FROM visitor_details_table WHERE district_name=? AND remarks_status= 1 ";
@@ -166,7 +166,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
     public ArrayList<Visitor> getPenVisitorList(String districtName){
 
-        ArrayList<Visitor> visitorArrayList = new ArrayList<Visitor>();
+        ArrayList<Visitor> visitorArrayList = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT * FROM visitor_details_table WHERE district_name=? AND remarks_status= 0 ";

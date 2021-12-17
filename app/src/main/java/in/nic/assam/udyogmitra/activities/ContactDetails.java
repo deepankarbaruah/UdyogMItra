@@ -3,17 +3,12 @@ package in.nic.assam.udyogmitra.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
-
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.adapter.RecyclerViewAdapter;
 import in.nic.assam.udyogmitra.helper.DataBaseHelper;
@@ -42,13 +37,10 @@ public class ContactDetails extends AppCompatActivity {
         //Connecting to the database
         DataBaseHelper myDbHelper = new DataBaseHelper(ContactDetails.this);
 
-        homeIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        homeIcon.setOnClickListener(view -> {
 
-                Intent intent = new Intent(getApplicationContext(), VisitorHome.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getApplicationContext(), VisitorHome.class);
+            startActivity(intent);
         });
 
         Bundle extras = getIntent().getExtras();

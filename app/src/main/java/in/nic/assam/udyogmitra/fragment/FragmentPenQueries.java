@@ -94,39 +94,36 @@ public class FragmentPenQueries extends Fragment {
         visitorRecyclerViewAdapter = new VisitorRecyclerViewAdapter(getContext(), visitorArrayList);
         recyclerView.setAdapter(visitorRecyclerViewAdapter);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Log.d("getxxx","listener called");
-                swipeRefreshLayout.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshLayout.setRefreshing(true);
-                        // Get all contacts
-                        visitorArrayList = db.getPenVisitorList(gmHome.district_name);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Log.d("getxxx","listener called");
+            swipeRefreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    swipeRefreshLayout.setRefreshing(true);
+                    // Get all contacts
+                    visitorArrayList = db.getPenVisitorList(gmHome.district_name);
 
-                        //Use your recyclerView
-                        visitorRecyclerViewAdapter = new VisitorRecyclerViewAdapter(getContext(), visitorArrayList);
-                        recyclerView.setAdapter(visitorRecyclerViewAdapter);
+                    //Use your recyclerView
+                    visitorRecyclerViewAdapter = new VisitorRecyclerViewAdapter(getContext(), visitorArrayList);
+                    recyclerView.setAdapter(visitorRecyclerViewAdapter);
 
-                        Handler mHandler=new Handler();
-                        mHandler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                swipeRefreshLayout.setRefreshing(false);
-                                Toast.makeText(getContext(), "Updated!", Toast.LENGTH_SHORT).show();
+                    Handler mHandler=new Handler();
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            swipeRefreshLayout.setRefreshing(false);
+                            Toast.makeText(getContext(), "Updated!", Toast.LENGTH_SHORT).show();
 
-                            }
-                        }, 1000);
+                        }
+                    }, 1000);
 
-                    }
-                });
+                }
+            });
 
-                swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                        android.R.color.holo_green_light,
-                        android.R.color.holo_orange_light,
-                        android.R.color.holo_red_light);
-            }
+            swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                    android.R.color.holo_green_light,
+                    android.R.color.holo_orange_light,
+                    android.R.color.holo_red_light);
         });
 
         return view;

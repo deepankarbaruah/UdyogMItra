@@ -2,12 +2,10 @@ package in.nic.assam.udyogmitra.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,21 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.activities.GMHome;
 import in.nic.assam.udyogmitra.adapter.SubVisitorRVAdapter;
-import in.nic.assam.udyogmitra.adapter.VisitorRecyclerViewAdapter;
 import in.nic.assam.udyogmitra.helper.dbHelper;
 import in.nic.assam.udyogmitra.model.Visitor;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSubQueries#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentSubQueries extends Fragment {
 
     private RecyclerView recyclerView;
@@ -57,7 +48,6 @@ public class FragmentSubQueries extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static FragmentSubQueries newInstance(String param1, String param2) {
         FragmentSubQueries fragment = new FragmentSubQueries();
         Bundle args = new Bundle();
@@ -99,39 +89,36 @@ public class FragmentSubQueries extends Fragment {
         SubVisitorRVAdapter = new SubVisitorRVAdapter(getContext(), visitorArrayList);
         recyclerView.setAdapter(SubVisitorRVAdapter);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Log.d("getxxx","listener called");
-                swipeRefreshLayout.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshLayout.setRefreshing(true);
-                        // Get all contacts
-                        visitorArrayList = db.getSubVisitorList(gmHome.district_name);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Log.d("getxxx","listener called");
+            swipeRefreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    swipeRefreshLayout.setRefreshing(true);
+                    // Get all contacts
+                    visitorArrayList = db.getSubVisitorList(gmHome.district_name);
 
-                        //Use your recyclerView
-                        SubVisitorRVAdapter = new SubVisitorRVAdapter(getContext(), visitorArrayList);
-                        recyclerView.setAdapter(SubVisitorRVAdapter);
+                    //Use your recyclerView
+                    SubVisitorRVAdapter = new SubVisitorRVAdapter(getContext(), visitorArrayList);
+                    recyclerView.setAdapter(SubVisitorRVAdapter);
 
-                        Handler mHandler=new Handler();
-                        mHandler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                swipeRefreshLayout.setRefreshing(false);
-                                Toast.makeText(getContext(), "Updated!", Toast.LENGTH_SHORT).show();
+                    Handler mHandler=new Handler();
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            swipeRefreshLayout.setRefreshing(false);
+                            Toast.makeText(getContext(), "Updated!", Toast.LENGTH_SHORT).show();
 
-                            }
-                        }, 1000);
+                        }
+                    }, 1000);
 
-                    }
-                });
+                }
+            });
 
-                swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                        android.R.color.holo_green_light,
-                        android.R.color.holo_orange_light,
-                        android.R.color.holo_red_light);
-            }
+            swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                    android.R.color.holo_green_light,
+                    android.R.color.holo_orange_light,
+                    android.R.color.holo_red_light);
         });
 
         return view;

@@ -46,9 +46,6 @@ public class VisitorHome extends AppCompatActivity {
         setContentView(R.layout.activity_visitor_home);
         SQLiteDatabase.loadLibs(this);
 
-        /***
-         * Creating master_database
-         */
         DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
         try {
             myDbHelper.createDataBase();
@@ -81,73 +78,67 @@ public class VisitorHome extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        homeIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        homeIcon.setOnClickListener(view -> {
 
-                Intent intent = new Intent(getApplicationContext(), VisitorHome.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getApplicationContext(), VisitorHome.class);
+            startActivity(intent);
         });
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(R.id.frame_layout, new FragmentVisitorHome());
         tx.commit();
 
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                unCheckAllMenuItems(navView.getMenu());
-                Fragment fragment = null;
-                Class fragmentClass = null;
-                switch (item.getItemId()) {
-                    case R.id.nav_visitor_home:
-                        fragmentClass = FragmentVisitorHome.class;
-                        break;
+        navView.setNavigationItemSelectedListener(item -> {
+            unCheckAllMenuItems(navView.getMenu());
+            Fragment fragment = null;
+            Class fragmentClass = null;
+            switch (item.getItemId()) {
+                case R.id.nav_visitor_home:
+                    fragmentClass = FragmentVisitorHome.class;
+                    break;
 
-                    case R.id.nav_form:
-                        fragmentClass = FragmentForm.class;
-                        break;
+                case R.id.nav_form:
+                    fragmentClass = FragmentForm.class;
+                    break;
 
-                    case R.id.nav_gm_login:
-                        Intent intent = new Intent(getApplicationContext(), GMLogin.class);
-                        ActivityOptions options=ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
-                        startActivity(intent,options.toBundle());
-                        break;
+                case R.id.nav_gm_login:
+                    Intent intent = new Intent(getApplicationContext(), GMLogin.class);
+                    ActivityOptions options=ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
+                    startActivity(intent,options.toBundle());
+                    break;
 
-                    case R.id.nav_info:
-                        fragmentClass = FragmentAbout.class;
-                        break;
+                case R.id.nav_info:
+                    fragmentClass = FragmentAbout.class;
+                    break;
 
-                    case R.id.nav_help:
-                        fragmentClass = FragmentHelp.class;
-                        break;
+                case R.id.nav_help:
+                    fragmentClass = FragmentHelp.class;
+                    break;
 
-                    case R.id.nav_track:
-                        fragmentClass = FragmentStatus.class;
-                        break;
+                case R.id.nav_track:
+                    fragmentClass = FragmentStatus.class;
+                    break;
 //
-                    default:
-                        fragmentClass = FragmentVisitorHome.class;
-                        break;
-                }
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                if (!(fragmentClass == null)) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction transaction=fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left,R.anim.slide_in_left,R.anim.slide_out_right);
-                    transaction.replace(R.id.frame_layout, fragment).commit();
-                }
-                item.setChecked(true);
-                setTitle(item.getTitle());
-                drawerLayout.closeDrawers();
-                return true;
+                default:
+                    fragmentClass = FragmentVisitorHome.class;
+                    break;
             }
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            if (!(fragmentClass == null)) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction=fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left,R.anim.slide_in_left,R.anim.slide_out_right);
+                transaction.replace(R.id.frame_layout, fragment).commit();
+            }
+            item.setChecked(true);
+            setTitle(item.getTitle());
+            drawerLayout.closeDrawers();
+            return true;
         });
     }
 

@@ -59,9 +59,6 @@ public class GMHome extends AppCompatActivity {
 
         SQLiteDatabase.loadLibs(this);
 
-        /***
-         * Connecting to master_database
-         */
         DataBaseHelper myDbHelper = new DataBaseHelper(getApplicationContext());
         try {
             myDbHelper.createDataBase();
@@ -74,12 +71,12 @@ public class GMHome extends AppCompatActivity {
             throw sqle;
         }
 
-        /***Get district name***/
-        Intent getIntent = getIntent();
+
+        Bundle bundle = getIntent().getExtras();
         //The key argument here must match that used in the other activity
-         district_name = getIntent.getStringExtra("gm_district");
-         gmName = getIntent.getStringExtra("gm_name");
-         gmId = getIntent.getStringExtra("gm_id");
+         district_name = bundle.getString("gm_district");
+         gmName = bundle.getString("gm_name");
+         gmId = bundle.getString("gm_id");
 //        Log.d("mydb","district_select: " +district);
 
         Log.d("db","" + gmName);
@@ -119,93 +116,87 @@ public class GMHome extends AppCompatActivity {
         tx.replace(R.id.frame_layout, new FragmentGmHome());
         tx.commit();
 
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        navView.setNavigationItemSelectedListener(item -> {
 
-                unCheckAllMenuItems(navView.getMenu());
-                Fragment fragment = null;
-                Class fragmentClass = null;
-                switch (item.getItemId()) {
-                    case R.id.nav_gm_home:
-                        fragmentClass = FragmentGmHome.class;
-                        break;
+            unCheckAllMenuItems(navView.getMenu());
+            Fragment fragment = null;
+            Class fragmentClass = null;
+            switch (item.getItemId()) {
+                case R.id.nav_gm_home:
+                    fragmentClass = FragmentGmHome.class;
+                    break;
 
-                    case R.id.nav_pen_queries:
-                        fragmentClass = FragmentPenQueries.class;
-                        break;
+                case R.id.nav_pen_queries:
+                    fragmentClass = FragmentPenQueries.class;
+                    break;
 
-                    case R.id.nav_sub_queries:
-                        fragmentClass = FragmentSubQueries.class;
-                        break;
+                case R.id.nav_sub_queries:
+                    fragmentClass = FragmentSubQueries.class;
+                    break;
 
-                    case R.id.nav_profile:
-                        fragmentClass = FragmentProfile.class;
-                        break;
+                case R.id.nav_profile:
+                    fragmentClass = FragmentProfile.class;
+                    break;
 
-                    case R.id.nav_help:
-                        fragmentClass = FragmentHelp.class;
-                        break;
+                case R.id.nav_help:
+                    fragmentClass = FragmentHelp.class;
+                    break;
 //
-                    default:
-                        fragmentClass = FragmentGmHome.class;
-                        break;
-                }
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                if (!(fragmentClass == null)) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction transaction=fragmentManager.beginTransaction();
-                    transaction.setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left,R.anim.slide_in_left,R.anim.slide_out_right);
-                    transaction.replace(R.id.frame_layout, fragment).commit();
-                }
-                item.setChecked(true);
-                setTitle(item.getTitle());
-                drawerLayout.closeDrawers();
-                return true;
+                default:
+                    fragmentClass = FragmentGmHome.class;
+                    break;
             }
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            if (!(fragmentClass == null)) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction=fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left,R.anim.slide_in_left,R.anim.slide_out_right);
+                transaction.replace(R.id.frame_layout, fragment).commit();
+            }
+            item.setChecked(true);
+            setTitle(item.getTitle());
+            drawerLayout.closeDrawers();
+            return true;
         });
 
-        homeIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        homeIcon.setOnClickListener(view -> {
 
-                ActivityOptions options =
-                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
-                Intent intent = new Intent(getApplicationContext(), GMHome.class);
-                intent.putExtra("gm_district",district_name);
-                intent.putExtra("gm_district",district_name);
-                intent.putExtra("gm_name",gmName);
-                intent.putExtra("gm_id",gmId);
-                startActivity(intent,options.toBundle());
-            }
+            ActivityOptions options =
+                    ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_in_right, R.anim.slide_out_left);
+            Intent intent = new Intent(getApplicationContext(), GMHome.class);
+
+            Bundle newBundle = new Bundle();
+
+            newBundle.putString("gm_district",district_name);
+            newBundle.putString("gm_name",gmName);
+            newBundle.putString("gm_id",gmId);
+            intent.putExtras(newBundle);
+            startActivity(intent,options.toBundle());
         });
 
-        powerIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(GMHome.this);
-                builder.setMessage("Do you want to logout?")
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                startActivity(new Intent(getApplicationContext(), VisitorHome.class));
-                                finishAffinity();
-                            }
-                        })
-                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User cancelled the dialog
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                //Setting the title manually
-                alert.setTitle("Alert!");
-                alert.show();
-            }
+        powerIcon.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(GMHome.this);
+            builder.setMessage("Do you want to logout?")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startActivity(new Intent(getApplicationContext(), VisitorHome.class));
+                            finishAffinity();
+                        }
+                    })
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            //Setting the title manually
+            alert.setTitle("Alert!");
+            alert.show();
         });
     }
 

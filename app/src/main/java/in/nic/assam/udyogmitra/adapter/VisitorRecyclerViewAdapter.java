@@ -3,7 +3,6 @@ package in.nic.assam.udyogmitra.adapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import in.nic.assam.udyogmitra.R;
-import in.nic.assam.udyogmitra.fragment.FragmentGmHome;
 import in.nic.assam.udyogmitra.model.Visitor;
 import in.nic.assam.udyogmitra.helper.dbHelper;
 
@@ -61,64 +54,61 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
 //        holder.tvRemark.setText(visitor.getRemarks());
 //        holder.tvDate_of_sub.setText(visitor.getDate_of_sub());
 
-        holder.viewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.viewBtn.setOnClickListener(view -> {
 //                int position = this.getAdapterPosition();
-                Visitor visitor = visitorsList.get(position);
-                String name = visitor.getVisitorName();
-                String organisation = visitor.getOrganisationName();
-                String phoneNumber = visitor.getVisitorNumber();
-                String purpose = visitor.getPurpose();
-                String date_of_sub = visitor.getDate_of_sub();
-                String visitorSearchDistrict = visitor.getDistrict_name();
-                String gmRemarks = visitor.getRemarks();
-                int remarks_status = visitor.getRemarks_status();
+            Visitor visitor1 = visitorsList.get(position);
+            String name = visitor1.getVisitorName();
+            String organisation = visitor1.getOrganisationName();
+            String phoneNumber = visitor1.getVisitorNumber();
+            String purpose = visitor1.getPurpose();
+            String date_of_sub = visitor1.getDate_of_sub();
+            String visitorSearchDistrict = visitor1.getDistrict_name();
+            String gmRemarks = visitor1.getRemarks();
+            int remarks_status = visitor1.getRemarks_status();
 
 
-                dialog=new Dialog(context);
-                dialog.setContentView(R.layout.dialog_gmremarks);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.setCancelable(true); //Optional
-                dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-                // Capture the layout's TextView and set the string as its text
-                tvDisplayName = (TextView) dialog.findViewById(R.id.name);
-                tvDisplayOrgName = (TextView) dialog.findViewById(R.id.organisation);
-                tvDisplayPhoneNumber = (TextView) dialog.findViewById(R.id.phone);
-                tvDisplayPurpose = (TextView) dialog.findViewById(R.id.purpose);
-                tvDisplayDate_of_sub = (TextView) dialog.findViewById(R.id.date_of_sub);
-                remarks = (EditText) dialog.findViewById(R.id.remarks);
-                btnSave = (Button) dialog.findViewById(R.id.save);
+            dialog=new Dialog(context);
+            dialog.setContentView(R.layout.dialog_gmremarks);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(true); //Optional
+            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+            // Capture the layout's TextView and set the string as its text
+            tvDisplayName = (TextView) dialog.findViewById(R.id.name);
+            tvDisplayOrgName = (TextView) dialog.findViewById(R.id.organisation);
+            tvDisplayPhoneNumber = (TextView) dialog.findViewById(R.id.phone);
+            tvDisplayPurpose = (TextView) dialog.findViewById(R.id.purpose);
+            tvDisplayDate_of_sub = (TextView) dialog.findViewById(R.id.date_of_sub);
+            remarks = (EditText) dialog.findViewById(R.id.remarks);
+            btnSave = (Button) dialog.findViewById(R.id.save);
 
 
-                tvDisplayName.setText(name);
-                tvDisplayOrgName.setText(organisation);
-                tvDisplayPhoneNumber.setText(phoneNumber);
-                tvDisplayPurpose.setText(purpose);
-                tvDisplayDate_of_sub.setText(date_of_sub);
-                remarks.setText(gmRemarks);
-                dialog.show();
+            tvDisplayName.setText(name);
+            tvDisplayOrgName.setText(organisation);
+            tvDisplayPhoneNumber.setText(phoneNumber);
+            tvDisplayPurpose.setText(purpose);
+            tvDisplayDate_of_sub.setText(date_of_sub);
+            remarks.setText(gmRemarks);
+            dialog.show();
 
-                btnSave.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(TextUtils.isEmpty(remarks.getText().toString())){
-                            remarks.requestFocus();
-                            remarks.setError("Give Some Remarks !");
-                        }
-
-                        else{
-                            editRemarks = remarks.getText().toString();
-                            dbHelper db = new dbHelper(context.getApplicationContext());
-                            db.saveRemarks(visitorSearchDistrict,name,editRemarks);
-                            Toast toast = Toast.makeText(context,"Remarks Saved...",Toast.LENGTH_SHORT);
-                            toast.show();
-                            dialog.dismiss();
-
-                        }
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(TextUtils.isEmpty(remarks.getText().toString())){
+                        remarks.requestFocus();
+                        remarks.setError("Give Some Remarks !");
                     }
-                });
-            }
+
+                    else{
+                        editRemarks = remarks.getText().toString();
+                        dbHelper db = new dbHelper(context.getApplicationContext());
+                        db.saveRemarks(visitorSearchDistrict,name,editRemarks);
+                        Toast toast = Toast.makeText(context,"Remarks Saved...",Toast.LENGTH_SHORT);
+                        toast.show();
+                        dialog.dismiss();
+
+                    }
+                }
+            });
         });
 
     }
@@ -138,7 +128,7 @@ public class VisitorRecyclerViewAdapter extends RecyclerView.Adapter<VisitorRecy
 //        public final TextView tvPurpose;
 //        public final TextView tvRemark;
 //        public final TextView tvDate_of_sub;
-        Button viewBtn;
+        final Button viewBtn;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
