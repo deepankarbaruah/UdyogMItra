@@ -9,22 +9,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-
 import com.google.android.material.navigation.NavigationView;
-
 import net.sqlcipher.database.SQLiteDatabase;
-
 import java.io.IOException;
-
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.fragment.FragmentAbout;
 import in.nic.assam.udyogmitra.fragment.FragmentForm;

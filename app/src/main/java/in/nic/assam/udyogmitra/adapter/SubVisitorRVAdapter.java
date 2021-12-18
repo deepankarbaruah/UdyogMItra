@@ -44,12 +44,8 @@ public class SubVisitorRVAdapter extends RecyclerView.Adapter<SubVisitorRVAdapte
         holder.tvVisitorName.setText(visitor.getVisitorName());
         holder.tvOrganisationName.setText(visitor.getOrganisationName());
         holder.tvPhoneNum.setText(visitor.getVisitorNumber());
-//        holder.tvPurpose.setText(visitor.getPurpose());
-//        holder.tvRemark.setText(visitor.getRemarks());
-//        holder.tvDate_of_sub.setText(visitor.getDate_of_sub());
 
         holder.viewBtn.setOnClickListener(view -> {
-//                int position = this.getAdapterPosition();
             Visitor visitor1 = visitorsList.get(position);
             String name = visitor1.getVisitorName();
             String organisation = visitor1.getOrganisationName();
@@ -98,9 +94,6 @@ public class SubVisitorRVAdapter extends RecyclerView.Adapter<SubVisitorRVAdapte
         public final TextView tvVisitorName;
         public final TextView tvOrganisationName;
         public final TextView tvPhoneNum;
-//        public final TextView tvPurpose;
-//        public final TextView tvRemark;
-//        public final TextView tvDate_of_sub;
         final Button viewBtn;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -109,9 +102,6 @@ public class SubVisitorRVAdapter extends RecyclerView.Adapter<SubVisitorRVAdapte
             tvVisitorName = itemView.findViewById(R.id.visitorName);
             tvOrganisationName = itemView.findViewById(R.id.organisationName);
             tvPhoneNum = itemView.findViewById(R.id.phoneNum);
-//            tvPurpose = itemView.findViewById(R.id.purpose);
-//            tvRemark = itemView.findViewById(R.id.remark);
-//            tvDate_of_sub = itemView.findViewById(R.id.date_of_sub);
             viewBtn = itemView.findViewById(R.id.viewBtn);
         }
     }

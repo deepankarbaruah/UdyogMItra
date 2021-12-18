@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
+
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.model.SliderModelClass;
 import in.nic.assam.udyogmitra.adapter.SliderPageAdapter;
@@ -55,12 +57,38 @@ public class FragmentVisitorHome extends Fragment {
 
         SliderPageAdapter itemsPager_adapter = new SliderPageAdapter(getContext(), listItems);
         page.setAdapter(itemsPager_adapter);
+
+        // The_slide_timer
+        java.util.Timer timer = new java.util.Timer();
+        timer.scheduleAtFixedRate(new The_slide_timer(),2000,3000);
+
         tabLayout.setupWithViewPager(page,true);
 
 
         // Inflate the layout for this fragment
         return view;
     }
+
+    public class The_slide_timer extends TimerTask {
+        public void run() {
+
+            if(getActivity() != null){
+
+                getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        if (page.getCurrentItem()< listItems.size()-1) {
+                            page.setCurrentItem(page.getCurrentItem()+1);
+                        }
+                        else
+                            page.setCurrentItem(0);
+                    }
+                });
+            }
+            else
+                return;
+        }
+    }
+
 
 
 }

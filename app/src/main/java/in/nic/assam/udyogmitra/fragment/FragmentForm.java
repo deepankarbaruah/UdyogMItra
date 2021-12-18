@@ -137,7 +137,7 @@ public class FragmentForm extends Fragment {
 
 
             }
-        }, 1000);
+        }, 500);
 
         buttonSubmit.setOnClickListener(v -> {
 
@@ -160,7 +160,7 @@ public class FragmentForm extends Fragment {
                 return;
             }
             if (TextUtils.isEmpty(til_dist.getEditText().getText().toString())) {
-                Toast.makeText(getContext(), "PLEASE select DIST", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Please select District", Toast.LENGTH_SHORT).show();
                 return;
             }
             if(!isValidMobile(visitorNumber.getText().toString().trim())){

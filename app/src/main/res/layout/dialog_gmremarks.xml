@@ -152,7 +152,8 @@
                             android:textSize="18sp"
                             android:layout_weight="1"
                             android:hint="Remarks"
-                            android:singleLine="false"/>
+                            android:singleLine="false"
+                            android:autofillHints="none" />
                 </TableRow>
 
                 <TableRow
