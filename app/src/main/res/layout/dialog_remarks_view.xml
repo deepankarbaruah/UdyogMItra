@@ -10,12 +10,12 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
                 <TableRow>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Name :"
@@ -27,9 +27,9 @@
                             android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/poppinsmedium"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
                             android:text="-----"
                             android:textSize="18sp"
                             android:layout_weight=".5"/>
@@ -39,7 +39,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Organisation :"
@@ -51,9 +50,9 @@
                             android:id="@+id/organisation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/poppinsmedium"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
                             android:text="-----"
                             android:textSize="18sp"
                             android:layout_weight=".5"/>
@@ -62,7 +61,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Phone Number :"
@@ -74,9 +72,9 @@
                             android:id="@+id/phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/poppinsmedium"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
                             android:text="-----"
                             android:textSize="18sp"
                             android:layout_weight=".5"/>
@@ -86,7 +84,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Purpose :"
@@ -98,9 +95,9 @@
                             android:id="@+id/purpose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/poppinsmedium"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
                             android:text="-----"
                             android:textSize="18sp"
                             android:layout_weight=".5"/>
@@ -110,7 +107,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Date of Submission :"
@@ -122,9 +118,9 @@
                             android:id="@+id/date_of_sub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/poppinsmedium"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
                             android:text="-----"
                             android:textSize="18sp"
                             android:layout_weight=".5"/>
@@ -134,7 +130,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:text="Remarks :"
@@ -146,25 +141,13 @@
                             android:id="@+id/remarks"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/poppinsmedium"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
                             android:text="-----"
                             android:textSize="18sp"
                             android:layout_weight=".5"/>
                 </TableRow>
-
-<!--                <TableRow-->
-<!--                    android:layout_gravity="center">-->
-<!--                        <com.google.android.material.button.MaterialButton-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:id="@+id/save"-->
-<!--                            android:text="Save"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_weight="1"-->
-<!--                            />-->
-<!--                </TableRow>-->
-
 
         </TableLayout>
 

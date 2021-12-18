@@ -21,8 +21,8 @@ import net.sqlcipher.database.SQLiteDatabase;
 import java.io.IOException;
 import in.nic.assam.udyogmitra.R;
 import in.nic.assam.udyogmitra.fragment.FragmentAbout;
+import in.nic.assam.udyogmitra.fragment.FragmentContact;
 import in.nic.assam.udyogmitra.fragment.FragmentForm;
-import in.nic.assam.udyogmitra.fragment.FragmentHelp;
 import in.nic.assam.udyogmitra.fragment.FragmentStatus;
 import in.nic.assam.udyogmitra.fragment.FragmentVisitorHome;
 import in.nic.assam.udyogmitra.helper.DataBaseHelper;
@@ -105,8 +105,8 @@ public class VisitorHome extends AppCompatActivity {
                     fragmentClass = FragmentAbout.class;
                     break;
 
-                case R.id.nav_help:
-                    fragmentClass = FragmentHelp.class;
+                case R.id.nav_contact:
+                    fragmentClass = FragmentContact.class;
                     break;
 
                 case R.id.nav_track:

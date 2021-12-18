@@ -30,8 +30,8 @@ import net.sqlcipher.database.SQLiteDatabase;
 import java.io.IOException;
 
 import in.nic.assam.udyogmitra.R;
+import in.nic.assam.udyogmitra.fragment.FragmentContact;
 import in.nic.assam.udyogmitra.fragment.FragmentGmHome;
-import in.nic.assam.udyogmitra.fragment.FragmentHelp;
 import in.nic.assam.udyogmitra.fragment.FragmentPenQueries;
 import in.nic.assam.udyogmitra.fragment.FragmentProfile;
 import in.nic.assam.udyogmitra.fragment.FragmentSubQueries;
@@ -138,8 +138,8 @@ public class GMHome extends AppCompatActivity {
                     fragmentClass = FragmentProfile.class;
                     break;
 
-                case R.id.nav_help:
-                    fragmentClass = FragmentHelp.class;
+                case R.id.nav_contact:
+                    fragmentClass = FragmentContact.class;
                     break;
 //
                 default:
@@ -205,15 +205,27 @@ public class GMHome extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }else{
-            super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(GMHome.this);
+            builder.setMessage("Do you want to logout?")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startActivity(new Intent(getApplicationContext(), VisitorHome.class));
+                            finishAffinity();
+                        }
+                    })
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            //Setting the title manually
+            alert.setTitle("Alert!");
+            alert.show();
         }
     }
 
-    // override the onOptionsItemSelected()
-    // function to implement
-    // the item click listener callback
-    // to open and close the navigation
-    // drawer when the icon is clicked
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
