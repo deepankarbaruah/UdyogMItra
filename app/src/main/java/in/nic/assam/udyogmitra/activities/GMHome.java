@@ -15,6 +15,7 @@ import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -109,6 +110,12 @@ public class GMHome extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getColor(R.color.white));
+        } else {
+            actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getColor(R.color.white));
+        }
+
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -141,7 +148,7 @@ public class GMHome extends AppCompatActivity {
                 case R.id.nav_contact:
                     fragmentClass = FragmentContact.class;
                     break;
-//
+
                 default:
                     fragmentClass = FragmentGmHome.class;
                     break;

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.database.SQLException;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,6 +69,12 @@ public class VisitorHome extends AppCompatActivity {
         // to toggle the button
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getColor(R.color.white));
+        } else {
+            actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getColor(R.color.white));
+        }
 
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
